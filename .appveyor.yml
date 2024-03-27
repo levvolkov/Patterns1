@@ -1,0 +1,16 @@
+image: Ubuntu2004
+
+stack: jdk 11
+
+branches:
+  only:
+    - master
+
+build: off
+
+install:
+  - java -jar ./artifacts/app-replan-delivery.jar &
+  - chmod +x gradlew
+
+build_script:
+  - ./gradlew test --info -Dselenide.headless=true
